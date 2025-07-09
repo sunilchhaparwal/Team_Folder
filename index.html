@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Team Sheets</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+      position: relative;
+      z-index: 1;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: url('https://cdn.pixabay.com/photo/2016/11/29/10/07/business-1868883_1280.jpg') no-repeat center center / cover;
+      filter: blur(8px);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: rgba(235, 132, 132, 0.9);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(4px);
+    }
+
+    h1 {
+      text-align: center;
+      color: #0a2032;
+      margin-bottom: 30px;
+      font-size: 2.2em;
+      position: relative;
+      z-index: 2;
+    }
+
+    .folder {
+      background-color: #e2e5f4;
+      border-left: 6px solid #b7bec6;
+      padding: 15px 20px;
+      margin: 12px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .folder:hover {
+      background-color: #5394d1;
+      transform: translateY(-2px);
+    }
+
+    .arrow {
+      font-size: 1.2em;
+      transition: transform 0.3s ease;
+    }
+
+    .expanded .arrow {
+      transform: rotate(90deg);
+    }
+
+    .sheet-links {
+      display: none;
+      padding-left: 30px;
+      margin-top: 10px;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .sheet-links a {
+      display: inline-block;
+      margin: 6px 0;
+      color: #020e19;
+      text-decoration: 10px;
+      font-weight: 10px;
+      padding: 5px 8px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .sheet-links a:hover {
+      background-color: #2f78c7;
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .folder {
+        font-size: 1em;
+        padding: 12px;
+      }
+
+      .container {
+        padding: 20px;
+      }
+    }
+  </style>
+
+  <script>
+    function toggleSheets(sheetId, folderElem) {
+      const sheetDiv = document.getElementById(sheetId);
+      const arrowSpan = folderElem.querySelector('.arrow');
+
+      if (sheetDiv.style.display === 'block') {
+        sheetDiv.style.display = 'none';
+        arrowSpan.innerHTML = '▶';
+        folderElem.classList.remove('expanded');
+      } else {
+        sheetDiv.style.display = 'block';
+        arrowSpan.innerHTML = '▼';
+        folderElem.classList.add('expanded');
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Team Folder Sheets</h1>
+
+    <!-- Folder example -->
+    <div class="folder" onclick="toggleSheets('viram-sheets', this)">
+      <span>📁 Viram</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="sheet-links" id="viram-sheets">
+      <a href="https://docs.google.com/spreadsheets/d/1EmY1XgCJ20OlCbvJwTyXaYXhFkZAgbewPmUlDWxWZT4/edit?gid=0#gid=0" target="_blank">1] FTWZ Tracking</a>
+      <a href="https://docs.google.com/spreadsheets/d/1dA_WltmPblAF0_d0TYa1fdI2plHFpfJrpXSO2iG5dG4/edit?usp=sharing" target="_blank">2] New Sheet 1</a>
+      <a href="https://docs.google.com/spreadsheets/d/1IPaygXjPyx4PoJYp1Z-HwoAQ98xWh-gmDDRSZzwQms8/edit?gid=0#gid=0" target="_blank">3] New Sheet 2</a>
+    </div>
+
+    <!-- Kritika -->
+    <div class="folder" onclick="toggleSheets('kritika-sheets', this)">
+      <span>📁 Kritika</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="sheet-links" id="kritika-sheets">
+      <a href="https://docs.google.com/spreadsheets/d/1xNL6KRQLiAtY6MBHX6ui_MT4GdzrKZEueOX7Sf4ysRc/edit?usp=sharing" target="_blank">1] Apple Pending Order- Russia</a>
+      <a href="https://docs.google.com/spreadsheets/d/1paIXE177H1oTOQqimg3MleIwbKoviIWZZYjAwMe6_14/edit?usp=sharing" target="_blank">2] New Sheet</a>
+    </div>
+
+    <!-- Yash -->
+    <div class="folder" onclick="toggleSheets('yash-sheets', this)">
+      <span>📁 Yash</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="sheet-links" id="yash-sheets">
+      <a href="https://docs.google.com/spreadsheets/d/1hx_BReJlUrXx-eQEt2EbTRLsQLQs4KPw8gMgcRfHINY/edit?usp=sharing" target="_blank">1] Enquiries</a>
+      <a href="https://docs.google.com/spreadsheets/d/1CBVvicgPpT5qP7I6r1lbgPl2azn11MG8yCctzUyqFq0/edit?usp=sharing" target="_blank">2] New Sheet</a>
+        <a href="https://docs.google.com/spreadsheets/d/1eCImyFb-l8yeRycCc4ubDP8euI-unmrM1bVo9Gj5hcg/edit?usp=sharing" target="_blank">3] New Sheet</a>
+    </div>
+
+    <!-- Rutuja -->
+    <div class="folder" onclick="toggleSheets('rutuja-sheets', this)">
+      <span>📁 Rutuja</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="sheet-links" id="rutuja-sheets">
+      <a href="https://docs.google.com/spreadsheets/d/1EE0YF5DO8Vqg4SCMgHpf7tnuxS1_3pAeJetc844onkE/edit?gid=1391441602#gid=1391441602" target="_blank">1] Dreame Main Sheet</a>
+    </div>
+
+    <!-- Himanshu -->
+    <div class="folder" onclick="toggleSheets('himanshu-sheets', this)">
+      <span>📁 Himanshu</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="sheet-links" id="himanshu-sheets">
+      <a href="https://docs.google.com/spreadsheets/d/1w_K-CULYPoA2TCzSvkCv6fK65YN_si1XNyxTyTuzcxE/edit?gid=0#gid=0" target="_blank">1] PRINTER AND INK PRICE</a>
+      <a href="https://docs.google.com/spreadsheets/d/1cAGtH8202CdiDfxapvHbyqur6S8zKT4h/edit?gid=189462051#gid=189462051" target="_blank">2] All PI Mastersheet 17-6</a>
+      <a href="https://docs.google.com/spreadsheets/d/1CD2M6lK4UzZKJBwQwZO37Ccerh5mCFEO9AOyySXXWdo/edit?gid=1106749027#gid=1106749027" target="_blank">3] Export (Himanshu)</a>  
+      <a href="https://docs.google.com/spreadsheets/d/1tZLIss_7scMET6eN4bo1R47OpvgMjyzhgEmj9GR9yBE/edit?usp=sharing" target="_blank">4] New Sheet</a>
+    </div>
+
+    <!-- Suyash -->
+    <div class="folder" onclick="toggleSheets('suyash-sheets', this)">
+      <span>📁 Suyash</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="sheet-links" id="suyash-sheets">
+      <a href="https://docs.google.com/spreadsheets/d/1Q4813iOHLTUH3jTPcwrw7KO7fHA3peFO7vlCi9xnvQI/edit?gid=0#gid=0" target="_blank">1] PI and PO Data</a>
+      <a href="https://docs.google.com/spreadsheets/d/1CheBmj5mzrEU6qMc8wRyRO6MwkpruO2v/edit?usp=drive_link&ouid=116790969181339926759&rtpof=true&sd=true" target="_blank">2] JULY PLAN FOR PRINTER</a>
+      <a href="https://docs.google.com/spreadsheets/d/1jrsoSrGjOFgzBZYjAybaA_MngyzR84Q6/edit?usp=drive_link&ouid=116790969181339926759&rtpof=true&sd=true" target="_blank">3] JULY DISPATCH PLAN</a>
+      <a href="https://docs.google.com/spreadsheets/d/1x0GDQTAcALOyMGoDFASdSrIw5-MYeOn4meAVeodg7M4/edit?usp=sharing" target="_blank">4] New Sheet</a>
+    </div>
+
+    <!-- Ajay Sir -->
+    <!-- <div class="folder" onclick="toggleSheets('ajay-sir-sheets', this)">
+      <span>📁 Ajay Sir</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="sheet-links" id="ajay-sir-sheets">
+      <a href="https://docs.google.com/YOUR-LINK-8" target="_blank">Sheet 1</a>
+    </div>
+
+    <!-- Sunil Sir -->
+    <!-- <div class="folder" onclick="toggleSheets('sunil-sir-sheets', this)">
+      <span>📁 Sunil Sir</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="sheet-links" id="sunil-sir-sheets">
+      <a href="https://docs.google.com/YOUR-LINK-9" target="_blank">Sheet 1</a>
+    </div>  -->
+
+  </div>
+</body>
+</html>
